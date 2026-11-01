@@ -3,13 +3,11 @@
 Trang web phân tích tương tác bộ dữ liệu Urban Retail Sales – HCMC 2025 (240 giao dịch).
 Một file `index.html` duy nhất: HTML + CSS + JavaScript, dữ liệu đã nhúng sẵn, biểu đồ vẽ bằng Plotly.js (CDN).
 
-## Trước khi nộp
+## Thông tin sinh viên
 
-1. Mở `index.html`, tìm dòng (gần cuối file):
-   `const STUDENT = { name: 'Họ và tên sinh viên', mshv: 'MSHV', course: 'Data Visualization' };`
-   và điền họ tên, MSHV của bạn. Tiêu đề trang sẽ tự đổi thành `<MSHV>_DataViz_Midterm`.
-2. Đổi tên thư mục này thành `<MSHV>_DataViz_Midterm` (ví dụ `2312001_DataViz_Midterm`).
-3. Mở `index.html` bằng trình duyệt để kiểm tra (cần Internet để tải Plotly.js, font và nền bản đồ).
+Thông tin hiện được điền trong `index.html`: Huỳnh Minh Phụng, MSHV 25C02033. Tiêu đề trang tự đổi theo MSHV thành `25C02033_DataViz_Midterm`.
+
+Trước khi nộp, mở `index.html` bằng trình duyệt để kiểm tra. Cần Internet để tải Plotly.js, font và nền bản đồ.
 
 ## Deploy lên Vercel
 
@@ -19,16 +17,9 @@ Một file `index.html` duy nhất: HTML + CSS + JavaScript, dữ liệu đã nh
 4. Mở URL Vercel cấp (dạng `https://<ten-project>.vercel.app`), kiểm tra lại trên một thiết bị khác.
 5. Tạo file `<MSHV>.pdf` gồm họ tên, MSHV và URL (dạng link bấm được) rồi nộp trên Moodle.
 
-## Cấu trúc trang
+## Các mục phân tích
 
-1. Giới thiệu và tóm tắt điều hành
-2. Dữ liệu và phương pháp (từ điển dữ liệu, xử lý giá trị thiếu, cách sử dụng)
-3. Tổng quan doanh số (KPI, danh mục, sản phẩm, tỷ trọng, cửa hàng, bản đồ)
-4. Xu hướng theo thời gian (tháng/quý, danh mục theo quý, thứ trong tuần)
-5. Khách hàng và giao dịch (bản đồ nhiệt, thanh toán, quy mô đơn, giao hàng và đánh giá)
-6. Quan hệ và mẫu hình (ma trận tương quan, giảm giá, giao dịch lỗ, tọa độ song song)
-7. Tám insight chính
-8. Kết luận và khuyến nghị
+Điều hướng chia dashboard thành các mục riêng: giới thiệu, phương pháp, tổng quan doanh số, xu hướng theo thời gian, khách hàng, quan hệ giữa các biến, và insight cùng kết luận. Các liên kết từ insight mở đúng mục và biểu đồ liên quan. Bảng dữ liệu có tiêu đề, đơn vị đo, phạm vi và quy tắc sắp xếp.
 
 ## Tương tác
 

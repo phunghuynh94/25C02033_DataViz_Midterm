@@ -38,6 +38,10 @@
   .links a{font-size:.86rem;color:var(--ink-2);text-decoration:none;padding:6px 10px;border-radius:8px;white-space:nowrap}
   .links a:hover{background:var(--bg);color:var(--ink)}
   .links a.active{color:var(--accent-ink);background:var(--accent-soft);font-weight:600}
+  .view-panel[hidden]{display:none!important}
+  .nav .wrap{gap:12px}
+  .brand{font-size:.88rem}
+  .links{margin-left:0}
   .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:#fff;color:var(--ink);border-radius:9px;padding:7px 13px;font-size:.86rem;font-weight:600;cursor:pointer;white-space:nowrap}
   .btn:hover{border-color:var(--ink-3)}
   .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -123,9 +127,13 @@
   .tag{flex:none;display:inline-block;font-size:.74rem;font-weight:700;color:var(--accent-ink);background:#fff;border:1px solid #BFDAD8;border-radius:6px;padding:1px 8px;margin-top:2px;white-space:nowrap}
   .hint{font-size:.82rem;color:var(--ink-2);background:#fff;border:1px dashed var(--line-2);border-radius:8px;padding:8px 12px;margin-top:10px}
   .hint b{color:var(--ink)}
-  table{border-collapse:collapse;width:100%;font-size:.86rem;background:#fff}
-  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{color:var(--ink-3);font-weight:600;font-size:.8rem}
+  table{border-collapse:collapse;width:100%;font-size:.84rem;background:#fff}
+  caption{text-align:left;padding:10px 12px;background:#F4F6F9;color:var(--ink-2);font-size:.82rem;line-height:1.5}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--ink-2);font-weight:600;font-size:.8rem;background:#F9FAFC}
+  tbody tr:nth-child(even){background:#FAFBFD}
+  tbody tr:hover{background:#F1F7F7}
+  tbody th[scope="row"]{color:var(--ink);font-weight:600;white-space:nowrap}
   td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
   td.neg{color:var(--loss);font-weight:600}
   .tscroll{overflow-x:auto}
@@ -162,6 +170,9 @@
   .totop.on{display:grid}
 
   @media (max-width:860px){
+    .nav{height:auto;min-height:var(--nav-h)}
+    .nav .wrap{min-height:var(--nav-h);height:auto;flex-wrap:wrap;gap:4px 10px;padding-top:8px;padding-bottom:8px}
+    .links{order:3;flex:0 0 100%;margin:0}
     .hero-grid{grid-template-columns:1fr;gap:28px}
     .sec-head{grid-template-columns:1fr;gap:4px}
     .sec-num{font-size:1.4rem}
@@ -180,16 +191,15 @@
 
 <nav class="nav" aria-label="Điều hướng">
   <div class="wrap">
-    <a class="brand" href="#gioi-thieu"><i>RS</i>Retail Sales HCMC 2025</a>
-    <div class="links" id="links">
-      <a href="#gioi-thieu">Giới thiệu</a>
-      <a href="#du-lieu">Dữ liệu</a>
-      <a href="#tong-quan">Tổng quan</a>
-      <a href="#xu-huong">Xu hướng</a>
-      <a href="#khach-hang">Khách hàng</a>
-      <a href="#quan-he">Quan hệ</a>
-      <a href="#insights">Insight</a>
-      <a href="#ket-luan">Kết luận</a>
+    <a class="brand" href="#gioi-thieu" data-view-link><i>RS</i>Retail Sales HCMC 2025</a>
+    <div class="links" id="links" role="group" aria-label="Các mục phân tích">
+      <a href="#gioi-thieu" data-view-link>Giới thiệu</a>
+      <a href="#du-lieu" data-view-link>Phương pháp</a>
+      <a href="#tong-quan" data-view-link>Tổng quan</a>
+      <a href="#xu-huong" data-view-link>Xu hướng</a>
+      <a href="#khach-hang" data-view-link>Khách hàng</a>
+      <a href="#quan-he" data-view-link>Quan hệ</a>
+      <a href="#insights" data-view-link>Insight &amp; kết luận</a>
     </div>
     <button class="btn" id="open-drawer" type="button" aria-controls="drawer" aria-expanded="false">Bộ lọc <span class="badge" id="fbadge">0</span></button>
   </div>
@@ -213,7 +223,7 @@
   <div class="drawer-f"><span id="drawer-count"></span><button class="btn" id="reset" type="button">Đặt lại tất cả</button></div>
 </aside>
 
-<header class="hero" id="gioi-thieu">
+<header class="hero view-panel" id="gioi-thieu" data-view="intro">
   <div class="wrap">
     <div class="hero-grid">
       <div>
@@ -248,7 +258,7 @@
 <main>
 
 <!-- ===================== 1. Executive summary ===================== -->
-<section class="section" aria-labelledby="h-exec">
+<section class="section view-panel" aria-labelledby="h-exec" data-view="intro">
   <div class="wrap">
     <div class="sec-head"><div class="sec-num">01</div><div><h2 id="h-exec">Tóm tắt điều hành</h2><p>Bốn con số dưới đây gói gọn câu chuyện dữ liệu. Phần còn lại của trang trình bày bằng chứng cho từng con số và các insight chi tiết.</p></div></div>
     <div class="tiles">
@@ -261,7 +271,7 @@
 </section>
 
 <!-- ===================== 2. Data & method ===================== -->
-<section class="section" id="du-lieu" aria-labelledby="h-data">
+<section class="section view-panel" id="du-lieu" aria-labelledby="h-data" data-view="data">
   <div class="wrap">
     <div class="sec-head"><div class="sec-num">02</div><div><h2 id="h-data">Dữ liệu và phương pháp</h2><p>Bộ dữ liệu gồm 240 giao dịch bán lẻ tại bốn cửa hàng ở TP.HCM trong năm 2025, mỗi giao dịch có 17 trường. Phần này mô tả từng trường, cách xử lý dữ liệu và cách đọc trang.</p></div></div>
     <div class="grid">
@@ -269,7 +279,8 @@
         <h3>Từ điển dữ liệu</h3>
         <div class="tscroll">
         <table>
-          <thead><tr><th>Trường</th><th>Kiểu</th><th>Mô tả</th><th>Vai trò trong phân tích</th></tr></thead>
+          <caption>Bảng 1. Từ điển dữ liệu: tên trường gốc, kiểu dữ liệu, ý nghĩa và vai trò trong các phân tích.</caption>
+          <thead><tr><th scope="col">Trường</th><th scope="col">Kiểu</th><th scope="col">Mô tả</th><th scope="col">Vai trò trong phân tích</th></tr></thead>
           <tbody>
             <tr><td>Transaction_ID</td><td>Định danh</td><td>Mã giao dịch T0001–T0240</td><td>Nhận diện giao dịch trong tooltip, bảng và tọa độ song song</td></tr>
             <tr><td>Date, Month, Day_of_Week</td><td>Thời gian</td><td>Ngày giao dịch, tháng (Jan–Dec) và thứ trong tuần</td><td>Xu hướng theo tháng, quý và nhịp mua sắm trong tuần</td></tr>
@@ -313,7 +324,7 @@
 </section>
 
 <!-- ===================== 3. Overall performance ===================== -->
-<section class="section" id="tong-quan" aria-labelledby="h-ov">
+<section class="section view-panel" id="tong-quan" aria-labelledby="h-ov" data-view="overview">
   <div class="wrap">
     <div class="sec-head"><div class="sec-num">03</div><div><h2 id="h-ov">Tổng quan doanh số</h2><p>Nơi tạo ra doanh thu và nơi tạo ra lợi nhuận không trùng nhau. Phần này so sánh các danh mục và cửa hàng trên cả hai thước đo, rồi đi sâu đến từng sản phẩm để tìm nguyên nhân.</p></div></div>
     <div class="kpis">
@@ -369,7 +380,7 @@
         </div>
       </article>
       <article class="card" id="card-map">
-        <div class="card-h"><div><h3>Bản đồ vị trí cửa hàng: quy mô doanh thu và biên lợi nhuận</h3><p class="sub">Kích thước vòng tròn theo doanh thu; màu theo biên lợi nhuận. Nền bản đồ OpenStreetMap.</p></div></div>
+        <div class="card-h"><div><h3>Bản đồ vị trí cửa hàng: quy mô doanh thu và biên lợi nhuận</h3><p class="sub">Điểm lớn hơn biểu thị doanh thu cao hơn; màu biểu thị biên lợi nhuận theo thang 20–28% (cam nhạt thấp, xanh teal cao). Vị trí điểm theo tọa độ cửa hàng; nền bản đồ OpenStreetMap.</p></div></div>
         <div id="c-map" class="plot"></div>
         <div class="card-f">
           <p class="how"><b>Cách đọc.</b> Bộ dữ liệu không có tọa độ, nên mỗi cửa hàng được đặt tại tâm khu vực tương ứng để minh họa vị trí tương đối. Bản đồ giúp liên hệ hiệu suất với địa lý: trung tâm (District 1, 3) so với vùng ven (District 7, Thu Duc). Kéo để di chuyển, lăn chuột để thu phóng.</p>
@@ -381,7 +392,7 @@
 </section>
 
 <!-- ===================== 4. Trends ===================== -->
-<section class="section" id="xu-huong" aria-labelledby="h-tr">
+<section class="section view-panel" id="xu-huong" aria-labelledby="h-tr" data-view="trends">
   <div class="wrap">
     <div class="sec-head"><div class="sec-num">04</div><div><h2 id="h-tr">Xu hướng theo thời gian</h2><p>Doanh số có tính mùa vụ rõ rệt, nhưng tháng bán nhiều nhất không phải tháng lãi nhiều nhất. Phần này xem xét doanh thu, lợi nhuận và mức giảm giá theo tháng, cơ cấu danh mục theo quý và nhịp mua sắm trong tuần.</p></div></div>
     <div class="grid">
@@ -413,7 +424,7 @@
 </section>
 
 <!-- ===================== 5. Customers & transactions ===================== -->
-<section class="section" id="khach-hang" aria-labelledby="h-cu">
+<section class="section view-panel" id="khach-hang" aria-labelledby="h-cu" data-view="customers">
   <div class="wrap">
     <div class="sec-head"><div class="sec-num">05</div><div><h2 id="h-cu">Khách hàng và giao dịch</h2><p>Ai đang mua gì, họ thanh toán ra sao, và điều gì quyết định mức độ hài lòng. Phần này kết hợp bản đồ nhiệt, biểu đồ tròn, biểu đồ cột và biểu đồ phân tán để mô tả hành vi khách và trải nghiệm giao hàng.</p></div></div>
     <div class="grid">
@@ -470,7 +481,7 @@
 </section>
 
 <!-- ===================== 6. Relationships ===================== -->
-<section class="section" id="quan-he" aria-labelledby="h-re">
+<section class="section view-panel" id="quan-he" aria-labelledby="h-re" data-view="relationships">
   <div class="wrap">
     <div class="sec-head"><div class="sec-num">06</div><div><h2 id="h-re">Quan hệ và mẫu hình</h2><p>Phần này chuyển từ các nhóm tổng hợp xuống cấp độ từng giao dịch: ma trận tương quan để định hướng, biểu đồ phân tán để kiểm chứng tác động của giảm giá, và tọa độ song song để nhìn tất cả các biến cùng lúc.</p></div></div>
     <div class="grid">
@@ -500,16 +511,16 @@
         </div>
       </article>
       <article class="card" id="card-loss">
-        <div class="card-h"><div><h3>Sáu giao dịch lỗ trong toàn bộ dữ liệu</h3><p class="sub">Sắp xếp theo mức lỗ; không chịu ảnh hưởng của bộ lọc.</p></div></div>
+        <div class="card-h"><div><h3>Sáu giao dịch lỗ trong toàn bộ dữ liệu</h3><p class="sub">Bảng tra cứu ngoại lệ; sắp xếp từ khoản lỗ lớn nhất đến nhỏ nhất. Không chịu ảnh hưởng của bộ lọc.</p></div></div>
         <div class="tscroll"><table id="t-loss"></table></div>
-        <div class="card-f"><p class="how"><b>Cách đọc.</b> Bảng là cách trình bày phù hợp nhất cho một tập nhỏ các ngoại lệ cần tra cứu chính xác đến từng mã giao dịch.</p>
+        <div class="card-f"><p class="how"><b>Ghi chú bảng.</b> Số tiền tính bằng đồng Việt Nam; lợi nhuận âm được tô đỏ. Bảng gồm sáu giao dịch lỗ trong toàn bộ 240 giao dịch, kể cả khi đang bật bộ lọc.</p>
           <div class="finding"><span class="tag">Insight 3</span><p>Ba trong sáu giao dịch lỗ xảy ra tại District 1, cửa hàng phụ thuộc Electronics nhiều nhất. Mức lỗ lớn nhất (−49 nghìn ₫) đến từ một Power Bank giảm giá 25%.</p></div>
         </div>
       </article>
       <article class="card" id="card-pair">
-        <div class="card-h"><div><h3>Hai giao dịch có doanh thu gần như bằng nhau</h3><p class="sub">Cùng khoảng 5,35 triệu ₫ doanh thu, lợi nhuận chênh ba lần.</p></div></div>
+        <div class="card-h"><div><h3>Hai giao dịch có doanh thu gần như bằng nhau</h3><p class="sub">Bảng đối chiếu hai giao dịch có doanh thu xấp xỉ 5,35 triệu ₫ nhưng lợi nhuận chênh khoảng ba lần.</p></div></div>
         <div class="tscroll"><table id="t-pair"></table></div>
-        <div class="card-f"><p class="how"><b>Cách đọc.</b> Một cặp ví dụ cụ thể để minh họa toàn bộ câu chuyện bằng hai dòng số liệu thật.</p>
+        <div class="card-f"><p class="how"><b>Ghi chú bảng.</b> Hai dòng là dữ liệu gốc của T0040 và T0106; tiền tệ tính bằng đồng Việt Nam, SL là số sản phẩm và biên lợi nhuận = lợi nhuận / doanh thu.</p>
           <div class="finding"><span class="tag">Insight 8</span><p>T0040 (8 Wireless Earbuds, giảm 20%) đạt 5,38 triệu ₫ doanh thu nhưng chỉ lãi 0,53 triệu ₫; T0106 (6 Jacket, giảm 15%) doanh thu 5,35 triệu ₫ nhưng lãi 1,76 triệu ₫. Doanh thu như nhau, lợi nhuận chênh ba lần, chỉ vì khác danh mục và mức giảm giá.</p></div>
         </div>
       </article>
@@ -527,7 +538,7 @@
 </section>
 
 <!-- ===================== 7. Key insights ===================== -->
-<section class="section" id="insights" aria-labelledby="h-ins">
+<section class="section view-panel" id="insights" aria-labelledby="h-ins" data-view="insights">
   <div class="wrap">
     <div class="sec-head"><div class="sec-num">07</div><div><h2 id="h-ins">Tám insight chính</h2><p>Mỗi insight được rút ra theo chuỗi quan sát → so sánh → đào sâu → kết luận và được chứng minh bằng ít nhất một biểu đồ ở các phần trên.</p></div></div>
     <div class="ins-grid">
@@ -544,7 +555,7 @@
 </section>
 
 <!-- ===================== 8. Conclusion ===================== -->
-<section class="section" id="ket-luan" aria-labelledby="h-kl">
+<section class="section view-panel" id="ket-luan" aria-labelledby="h-kl" data-view="insights">
   <div class="wrap">
     <div class="sec-head"><div class="sec-num">08</div><div><h2 id="h-kl">Kết luận và khuyến nghị</h2></div></div>
     <div class="prose">
@@ -817,7 +828,7 @@ const ROWS = [
 </script>
 <script>
 // ======================= Cấu hình sinh viên: sửa ba dòng dưới =======================
-const STUDENT = { name: 'Họ và tên sinh viên', mshv: 'MSHV', course: 'Data Visualization' };
+const STUDENT = { name: 'Huỳnh Minh Phụng', mshv: '25C02033', course: 'Data Visualization' };
 // ====================================================================================
 document.title = STUDENT.mshv + '_DataViz_Midterm';
 document.getElementById('stu-name').textContent = STUDENT.name;
@@ -1100,14 +1111,14 @@ function renderBand(rows) {
 }
 function renderLossTable() {
   const loss = DATA.filter(d => d.Profit < 0).sort((a, b) => a.Profit - b.Profit);
-  let h = '<thead><tr><th>Mã</th><th>Cửa hàng</th><th>Sản phẩm</th><th class="num">Giảm giá</th><th class="num">Doanh thu (₫)</th><th class="num">Giá vốn (₫)</th><th class="num">Lợi nhuận (₫)</th></tr></thead><tbody>';
-  loss.forEach(d => { h += '<tr><td>' + d.Transaction_ID + '</td><td>' + d.Store + '</td><td>' + d.Product + '</td><td class="num">' + d.Discount + '%</td><td class="num">' + fmt0(d.Revenue) + '</td><td class="num">' + fmt0(d.Cost) + '</td><td class="num neg">' + fmt0(d.Profit) + '</td></tr>'; });
+  let h = '<caption>Bảng 2. Sáu giao dịch có lợi nhuận âm; tiền tệ tính bằng đồng Việt Nam, sắp xếp theo lợi nhuận tăng dần (khoản lỗ lớn nhất trước).</caption><thead><tr><th scope="col">Mã giao dịch</th><th scope="col">Cửa hàng</th><th scope="col">Sản phẩm</th><th class="num" scope="col">Giảm giá (%)</th><th class="num" scope="col">Doanh thu (₫)</th><th class="num" scope="col">Giá vốn (₫)</th><th class="num" scope="col">Lợi nhuận (₫)</th></tr></thead><tbody>';
+  loss.forEach(d => { h += '<tr><th scope="row">' + d.Transaction_ID + '</th><td>' + d.Store + '</td><td>' + d.Product + '</td><td class="num">' + d.Discount + '%</td><td class="num">' + fmt0(d.Revenue) + '</td><td class="num">' + fmt0(d.Cost) + '</td><td class="num neg">' + fmt0(d.Profit) + '</td></tr>'; });
   document.getElementById('t-loss').innerHTML = h + '</tbody>';
 }
 function renderPairTable() {
   const rows = ['T0040', 'T0106'].map(id => DATA.find(d => d.Transaction_ID === id));
-  let h = '<thead><tr><th>Mã</th><th>Ngày</th><th>Cửa hàng</th><th>Sản phẩm</th><th class="num">SL</th><th class="num">Giảm giá</th><th class="num">Doanh thu (₫)</th><th class="num">Lợi nhuận (₫)</th><th class="num">Biên</th></tr></thead><tbody>';
-  rows.forEach(d => { h += '<tr><td>' + d.Transaction_ID + '</td><td>' + d.Date + '</td><td>' + d.Store + '</td><td>' + d.Product + ' <span style="color:' + CAT_COLOR[d.Product_Category] + '">(' + d.Product_Category + ')</span></td><td class="num">' + d.Quantity + '</td><td class="num">' + d.Discount + '%</td><td class="num">' + fmt0(d.Revenue) + '</td><td class="num"><b>' + fmt0(d.Profit) + '</b></td><td class="num">' + fmt1(d.Margin) + '%</td></tr>'; });
+  let h = '<caption>Bảng 3. Đối chiếu hai giao dịch có doanh thu gần tương đương; tiền tệ tính bằng đồng Việt Nam, biên lợi nhuận = lợi nhuận / doanh thu.</caption><thead><tr><th scope="col">Mã giao dịch</th><th scope="col">Ngày</th><th scope="col">Cửa hàng</th><th scope="col">Sản phẩm (danh mục)</th><th class="num" scope="col">Số lượng (sản phẩm)</th><th class="num" scope="col">Giảm giá (%)</th><th class="num" scope="col">Doanh thu (₫)</th><th class="num" scope="col">Lợi nhuận (₫)</th><th class="num" scope="col">Biên lợi nhuận (%)</th></tr></thead><tbody>';
+  rows.forEach(d => { h += '<tr><th scope="row">' + d.Transaction_ID + '</th><td>' + d.Date + '</td><td>' + d.Store + '</td><td>' + d.Product + ' <span style="color:' + CAT_COLOR[d.Product_Category] + '">(' + d.Product_Category + ')</span></td><td class="num">' + d.Quantity + '</td><td class="num">' + d.Discount + '%</td><td class="num">' + fmt0(d.Revenue) + '</td><td class="num"><b>' + fmt0(d.Profit) + '</b></td><td class="num">' + fmt1(d.Margin) + '%</td></tr>'; });
   document.getElementById('t-pair').innerHTML = h + '</tbody>';
 }
 function renderPar(rows) {
@@ -1187,15 +1198,42 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') setDrawer(fa
 // colour legend in method section
 document.getElementById('legend-pal').innerHTML = CATS.map(c => '<span><i style="background:' + CAT_COLOR[c] + '"></i>' + c + '</span>').join('') + '<span><i style="background:' + C.rev + '"></i>Doanh thu</span><span><i style="background:' + C.profit + '"></i>Lợi nhuận</span><span><i style="background:' + C.margin + '"></i>Biên lợi nhuận</span><span><i style="background:#fff;border:2px solid ' + C.loss + '"></i>Giao dịch lỗ</span>';
 
-// scrollspy + back to top
+// ---------- section views ----------
 const navLinks = [...document.querySelectorAll('#links a')];
-const secEls = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(en => { if (en.isIntersecting) { const id = '#' + en.target.id; navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id)); } });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-  secEls.forEach(s => io.observe(s));
+const viewPanels = [...document.querySelectorAll('[data-view].view-panel')];
+function showView(view, target, updateHistory) {
+  document.body.dataset.view = view;
+  viewPanels.forEach(panel => { panel.hidden = panel.dataset.view !== view; });
+  navLinks.forEach(link => {
+    const section = document.querySelector(link.hash);
+    const active = section && section.dataset.view === view;
+    link.classList.toggle('active', Boolean(active));
+    if (active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+  if (updateHistory && target && target.id) history.replaceState(null, '', '#' + target.id);
+  if (target) target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (!HAS_PLOTLY || !window.Plotly || !Plotly.Plots) return;
+    viewPanels.filter(panel => panel.dataset.view === view).forEach(panel => {
+      panel.querySelectorAll('.plot').forEach(el => { if (el.data) Plotly.Plots.resize(el); });
+    });
+  }));
 }
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+  const panel = target && target.closest('[data-view]');
+  if (!panel) return;
+  event.preventDefault();
+  showView(panel.dataset.view, target, true);
+});
+const initialTarget = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+const initialPanel = initialTarget && initialTarget.closest('[data-view]');
+showView(initialPanel ? initialPanel.dataset.view : 'intro', initialTarget || document.getElementById('gioi-thieu'), false);
+
+// back to top
 const totop = document.getElementById('totop');
 window.addEventListener('scroll', () => totop.classList.toggle('on', window.scrollY > 900), { passive: true });
 totop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
