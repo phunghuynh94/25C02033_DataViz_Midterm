@@ -3,7 +3,7 @@
 Trang web phân tích tương tác bộ dữ liệu Urban Retail Sales – HCMC 2025 (240 giao dịch).
 Một file `index.html` duy nhất: HTML + CSS + JavaScript, dữ liệu đã nhúng sẵn, biểu đồ vẽ bằng Plotly.js (CDN).
 
-## Thông tin sinh viên
+## Thông tin học viên
 
 Thông tin hiện được điền trong `index.html`: Huỳnh Minh Phụng, MSHV 25C02033. Tiêu đề trang tự đổi theo MSHV thành `25C02033_DataViz_Midterm`.
 
